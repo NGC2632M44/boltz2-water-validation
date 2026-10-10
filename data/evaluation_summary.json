@@ -5,5 +5,5 @@
   "errors": 0,
   "missing": 0,
   "failed_total": 0,
-  "metrics_csv": "/path/to/boltz-water-benchmark/metrics/production/sample_metrics.csv"
+  "metrics_csv": "/path/to/boltz-water-validation/metrics/production/sample_metrics.csv"
 }

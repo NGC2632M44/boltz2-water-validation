@@ -29,7 +29,7 @@ def download(url: str, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.exists() and path.stat().st_size > 0:
         return
-    request = urllib.request.Request(url, headers={"User-Agent": "Boltz2-water-benchmark/1.0"})
+    request = urllib.request.Request(url, headers={"User-Agent": "Boltz2-water-validation/1.0"})
     with urllib.request.urlopen(request, timeout=90) as response:
         payload = response.read()
     if not payload:

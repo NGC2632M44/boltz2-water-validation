@@ -1,6 +1,6 @@
-# Boltz-2 water-count benchmark
+# Boltz-2 explicit-water capability check
 
-This benchmark tests whether explicitly requesting 1–10 water molecules changes Boltz-2 ligand pose prediction, and whether predicted oxygen positions reproduce crystallographic waters.
+This capability check tests whether explicitly requesting 1–10 water molecules changes Boltz-2 ligand pose prediction, and whether predicted oxygen positions reproduce crystallographic waters.
 
 ## Dataset
 

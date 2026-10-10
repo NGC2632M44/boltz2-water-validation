@@ -1,13 +1,13 @@
-# Boltz-2 Water-Count Benchmark
+# Boltz-2 Explicit-Water Capability Check
 
-A reproducible benchmark of how explicitly requesting **1–10 water molecules** (each as an
+A capability check of whether explicitly requesting **1–10 water molecules** (each as an
 independent CCD `HOH` entity) affects **Boltz-2** protein–ligand structure prediction, and whether
 the predicted water oxygens reproduce **crystallographic (experimental) water positions**.
 
 The model receives **no** native protein, ligand, or water coordinates, **no** templates, and
-**no** pocket restraints — the benchmark is a blind prediction; crystal structures are used only
+**no** pocket restraints — the check is a blind prediction; crystal structures are used only
 for post-hoc scoring. See the [full report](docs/report.html)
-([rendered online](https://ngc2632m44.github.io/boltz2-water-benchmark/report.html)) for the complete write-up.
+([rendered online](https://ngc2632m44.github.io/boltz2-water-validation/report.html)) for the complete write-up.
 
 ## At a glance
 
@@ -65,7 +65,7 @@ Full per-target analysis is in [`docs/report.html`](docs/report.html).
 
 ```
 code/    prediction and evaluation pipeline (prepare → run_grid/run_retry → evaluate → summarize),
-         unit tests, the benchmark manifest, and its own README
+         unit tests, the study manifest, and its own README
 data/    summary tables, per-sample metrics, and sanitized provenance manifests
 docs/    full report (HTML/Markdown) and the two result figures
 ```

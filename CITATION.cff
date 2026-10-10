@@ -1,8 +1,8 @@
 cff-version: 1.2.0
-message: "If you use this benchmark, please cite it as below."
-title: "Boltz-2 Water-Count Benchmark"
+message: "If you use this capability check, please cite it as below."
+title: "Boltz-2 Explicit-Water Capability Check"
 abstract: >-
-  A reproducible benchmark of how explicitly requesting 1-10 water molecules (as independent
+  A capability check of whether explicitly requesting 1-10 water molecules (as independent
   CCD HOH entities) affects Boltz-2 protein-ligand structure prediction and whether predicted
   water oxygens reproduce crystallographic water positions.
 version: 1.0.0
@@ -11,13 +11,13 @@ license: MIT
 authors:
   - alias: NGC2632M44
     name: NGC2632M44
-repository-code: "https://github.com/NGC2632M44/boltz2-water-benchmark"
+repository-code: "https://github.com/NGC2632M44/boltz2-water-validation"
 keywords:
   - Boltz-2
   - protein-ligand
   - water molecules
   - structure prediction
-  - benchmark
+  - capability check
 references:
   - title: "Boltz-2"
     type: software

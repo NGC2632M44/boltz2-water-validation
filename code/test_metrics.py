@@ -112,9 +112,9 @@ class CcdComponentTests(unittest.TestCase):
                 component_atom_mapping(component_path, wrong_stereo)
 
     def test_ccd_atom_stereochemistry_requires_smiles_stereo(self):
-        component_dir = os.environ.get("WATER_BENCHMARK_COMPONENT_DIR")
+        component_dir = os.environ.get("WATER_VALIDATION_COMPONENT_DIR")
         if not component_dir:
-            self.skipTest("WATER_BENCHMARK_COMPONENT_DIR is not set")
+            self.skipTest("WATER_VALIDATION_COMPONENT_DIR is not set")
         component_path = Path(component_dir) / "A1DI0.cif"
         molecule = Chem.MolFromSmiles(canonical_smiles(component_path, "A1DI0"))
         Chem.RemoveStereochemistry(molecule)
@@ -122,9 +122,9 @@ class CcdComponentTests(unittest.TestCase):
             component_atom_mapping(component_path, molecule)
 
     def test_conflicting_canonical_descriptors_choose_ccd_consistent_stereo(self):
-        component_dir = os.environ.get("WATER_BENCHMARK_COMPONENT_DIR")
+        component_dir = os.environ.get("WATER_VALIDATION_COMPONENT_DIR")
         if not component_dir:
-            self.skipTest("WATER_BENCHMARK_COMPONENT_DIR is not set")
+            self.skipTest("WATER_VALIDATION_COMPONENT_DIR is not set")
         component_path = Path(component_dir) / "B49.cif"
         context = {"component_cif": str(component_path), "ligand_ccd": "B49"}
         program, _ = select_validated_ligand_smiles(context)
@@ -189,9 +189,9 @@ _pdbx_chem_comp_descriptor.descriptor CCO
         self.assertEqual(predicted_coordinates, {("A", ("label", 1)): [1.0, 0.0, 0.0]})
 
     def test_prepared_ccd_graphs_match_official_smiles(self):
-        component_dir = os.environ.get("WATER_BENCHMARK_COMPONENT_DIR")
+        component_dir = os.environ.get("WATER_VALIDATION_COMPONENT_DIR")
         if not component_dir:
-            self.skipTest("WATER_BENCHMARK_COMPONENT_DIR is not set")
+            self.skipTest("WATER_VALIDATION_COMPONENT_DIR is not set")
         component_paths = sorted(Path(component_dir).glob("*.cif"))
         self.assertGreater(len(component_paths), 0)
         for component_path in component_paths:

@@ -17,6 +17,6 @@ Attribution:
 - Predicted structures: Boltz-2 (https://github.com/jwohlwend/boltz), MIT.
 - Multiple sequence alignments: ColabFold / MMseqs2 MSA server.
 
-Suggested attribution for this benchmark:
-"Boltz-2 Water-Count Benchmark" (2026), NGC2632M44,
-https://github.com/NGC2632M44/boltz2-water-benchmark
+Suggested attribution for this capability check:
+"Boltz-2 Explicit-Water Capability Check" (2026), NGC2632M44,
+https://github.com/NGC2632M44/boltz2-water-validation

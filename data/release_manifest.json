@@ -26,11 +26,11 @@
   "missing_msa_references": [],
   "external_msa_references": [],
   "invalid_status_msa_references": [],
-  "source_completeness_manifest": "/path/to/boltz-water-benchmark/deliverables/production/source_completeness.json",
+  "source_completeness_manifest": "/path/to/boltz-water-validation/deliverables/production/source_completeness.json",
   "source_archive_file_count": 9712,
-  "paired_pdb_archive": "/path/to/boltz-water-benchmark/deliverables/production/paired_reference_boltz_pdbs.zip",
+  "paired_pdb_archive": "/path/to/boltz-water-validation/deliverables/production/paired_reference_boltz_pdbs.zip",
   "paired_pdb_archive_sha256": "26e15b0f15bbea4f92185c714b9c7a7502ce43b56662b148ed10807f0f5cb2c8",
-  "source_data_archive": "/path/to/boltz-water-benchmark/deliverables/production/source_data_and_metrics.zip",
+  "source_data_archive": "/path/to/boltz-water-validation/deliverables/production/source_data_and_metrics.zip",
   "source_data_archive_sha256": "aab9ff5e338d6730ecdfadcda8058e432b6038d1ae32cb5c0997cfb820067573",
-  "deliverables_directory": "/path/to/boltz-water-benchmark/deliverables/production"
+  "deliverables_directory": "/path/to/boltz-water-validation/deliverables/production"
 }

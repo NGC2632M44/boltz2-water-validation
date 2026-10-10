@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Boltz-2 输入水分子数量梯度基准报告</title>
+<title>Boltz-2 显式输入水分子能力验证报告</title>
 <style>
   :root { --ink:#1c2430; --muted:#5d6b7a; --line:#dbe2ea; --bg:#f5f7fa; --accent:#2a6fb0; --accent2:#2c8a69; --warn:#b4691f; }
   * { box-sizing: border-box; }
@@ -41,7 +41,7 @@
 <body>
 <div class="wrap">
 <header>
-  <h1>Boltz-2 输入水分子数量梯度基准</h1>
+  <h1>Boltz-2 显式输入水分子能力验证</h1>
   <div class="sub">显式请求 1–10 个 CCD 水分子对配体构象预测与晶体水氧复现的影响 · 执行日期 2026-10-10（Asia/Shanghai） · 服务器 <code>compute-node</code>（8× RTX 5090 32 GB）</div>
 </header>
 
@@ -115,10 +115,10 @@ M = 配体重原子数；另列出 median、frac(RMSD&lt;2 Å)（对重尾分布
 
 <h3>2.4 参考基线（两图紫色虚线）</h3>
 <ul>
-  <li><b>配体姿态 2.0 Å</b>：重原子 RMSD ≤ 2.0 Å 是对接/共折叠领域的通用"成功"判据（DOCK/CSAR 基准、Uni-Mol Docking V2、PoseBusters/PoseBench 等均以 2.0 Å 为达标线，1.0 Å 视为高精度）。</li>
+  <li><b>配体姿态 2.0 Å</b>：重原子 RMSD ≤ 2.0 Å 是对接/共折叠领域的通用"成功"判据（DOCK/CSAR 验证、Uni-Mol Docking V2、PoseBusters/PoseBench 等均以 2.0 Å 为达标线，1.0 Å 视为高精度）。</li>
   <li><b>水位点 ~1.0 Å</b>：合格的水位点预测器平均误差在亚 Å 量级——WaterDock 对 consensus 水位点平均误差 ≈0.78 Å（同一水位点判据常用 1.5 Å），SuperWater 定位精度 ≈0.3±0.06 Å（判据 1.0/0.5 Å）。故取 1.0 Å 作为保守"合格"线。</li>
 </ul>
-<p>来源：Sridhar et al., <i>Rapid and Accurate Prediction and Scoring of Water Molecules in Protein Binding Sites</i>, PLOS ONE 2012（WaterDock；WaterDock 2.0, PLOS ONE 2017）；SuperWater, <i>Communications Chemistry</i> 2025；Wierbowski et al., <i>Cross-docking benchmark</i>, Protein Science 2020；Uni-Mol Docking V2, arXiv 2024。两图均以紫色虚线画出该基线，便于与"合格水平"直接比较。</p>
+<p>来源：Sridhar et al., <i>Rapid and Accurate Prediction and Scoring of Water Molecules in Protein Binding Sites</i>, PLOS ONE 2012（WaterDock；WaterDock 2.0, PLOS ONE 2017）；SuperWater, <i>Communications Chemistry</i> 2025；Wierbowski et al., <i>Cross-docking capability check</i>, Protein Science 2020；Uni-Mol Docking V2, arXiv 2024。两图均以紫色虚线画出该基线，便于与"合格水平"直接比较。</p>
 
 <h2>3 · 数据完整性（8580 / 9000 缺了什么）</h2>
 <p>设计为 30 目标 × 10 个水数量 × 30 重复 = 9000；实得 <b>8580</b>，缺口 <b>420 = 3 目标 × 10 水数量 × 14 重复</b>。</p>
@@ -222,7 +222,7 @@ M = 配体重原子数；另列出 median、frac(RMSD&lt;2 Å)（对重尾分布
 </ul>
 
 <h2>7 · 交付物与校验</h2>
-<p>运行 <code>production</code> 产物位于服务器 <code>/path/to/boltz-water-benchmark/</code>，同步到本地 <code>results/water-gradient-benchmark/</code>：</p>
+<p>运行 <code>production</code> 产物位于服务器 <code>/path/to/boltz-water-validation/</code>，同步到本地 <code>results/water-gradient-capability check/</code>：</p>
 <ul>
   <li><code>deliverables/production/</code>：<code>summary_by_water_count.csv</code>、<code>summary_by_target_water.csv</code>、<code>scatter_coordinates.csv</code>、<code>ligand_rmsd_scatter.svg</code>、<code>water_position_scatter.svg</code>、<code>source_completeness.json</code>、<code>release_manifest.json</code>、<code>paired_reference_boltz_pdbs.zip</code>（8580 配对 PDB）、<code>source_data_and_metrics.zip</code>。</li>
   <li><code>metrics/production/</code>：<code>sample_metrics.csv</code>（逐样本 8580 行）、<code>evaluation_summary.json</code>。</li>

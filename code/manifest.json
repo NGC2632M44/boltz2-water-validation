@@ -1,5 +1,5 @@
 {
-  "benchmark": "Boltz-2 ligand pose and water oxygen prediction as a function of input water count",
+  "study": "Boltz-2 ligand pose and water oxygen prediction as a function of input water count",
   "accessed": "2026-10-09",
   "source": "RCSB Protein Data Bank",
   "source_urls": {

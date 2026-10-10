@@ -1,6 +1,6 @@
 {
-  "manifest": "/path/to/boltz-water-benchmark/code/manifest.json",
-  "root": "/path/to/boltz-water-benchmark",
+  "manifest": "/path/to/boltz-water-validation/code/manifest.json",
+  "root": "/path/to/boltz-water-validation",
   "target_count_requested": 30,
   "target_count_prepared": 30,
   "seed_base": 20261009,

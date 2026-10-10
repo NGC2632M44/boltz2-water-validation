@@ -1,4 +1,4 @@
-# Boltz-2 输入水分子数量梯度基准
+# Boltz-2 显式输入水分子能力验证
 
 显式请求 1–10 个 CCD 水分子对配体构象预测与晶体水氧复现的影响。
 执行日期 2026-10-10（Asia/Shanghai）；服务器 `compute-node`（8× RTX 5090 32 GB）。
@@ -79,7 +79,7 @@ RMSD = min_{π∈自同构} sqrt( (1/M) Σ_i || (R·p_i + t) − q_{π(i)} ||² 
 
 ### 2.4 参考基线（两图紫色虚线）
 
-- **配体姿态 2.0 Å**：重原子 RMSD ≤ 2.0 Å 是对接/共折叠领域的通用"成功"判据（DOCK/CSAR 基准、Uni-Mol Docking V2、PoseBusters/PoseBench 等），1.0 Å 为高精度。
+- **配体姿态 2.0 Å**：重原子 RMSD ≤ 2.0 Å 是对接/共折叠领域的通用"成功"判据（DOCK/CSAR 验证、Uni-Mol Docking V2、PoseBusters/PoseBench 等），1.0 Å 为高精度。
 - **水位点 ~1.0 Å**：合格水位点预测器平均误差在亚 Å 量级——WaterDock 对 consensus 水位点平均误差 ≈0.78 Å（判据 1.5 Å），SuperWater 定位精度 ≈0.3±0.06 Å（判据 1.0/0.5 Å）。取 1.0 Å 作保守"合格"线。
 
 来源：Sridhar et al., PLOS ONE 2012（WaterDock；WaterDock 2.0, 2017）；SuperWater, Communications Chemistry 2025；Wierbowski et al., Protein Science 2020；Uni-Mol Docking V2, arXiv 2024。两图均以紫色虚线画出基线。
@@ -178,7 +178,7 @@ RMSD = min_{π∈自同构} sqrt( (1/M) Σ_i || (R·p_i + t) − q_{π(i)} ||² 
 
 ## 7 · 交付物与校验
 
-服务器 `/path/to/boltz-water-benchmark/`，同步到本地 `results/water-gradient-benchmark/`：
+服务器 `/path/to/boltz-water-validation/`，同步到本地 `results/water-gradient-capability check/`：
 
 - `deliverables/production/`：`summary_by_water_count.csv`、`summary_by_target_water.csv`、`scatter_coordinates.csv`、`ligand_rmsd_scatter.svg`、`water_position_scatter.svg`、`source_completeness.json`、`release_manifest.json`、`paired_reference_boltz_pdbs.zip`（8580 配对 PDB）、`source_data_and_metrics.zip`。
 - `metrics/production/`：`sample_metrics.csv`（逐样本 8580 行）、`evaluation_summary.json`。
