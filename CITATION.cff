@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite it as below."
+title: "Boltz-2 Water-Count Benchmark"
+abstract: >-
+  A reproducible benchmark of how explicitly requesting 1-10 water molecules (as independent
+  CCD HOH entities) affects Boltz-2 protein-ligand structure prediction and whether predicted
+  water oxygens reproduce crystallographic water positions.
+version: 1.0.0
+date-released: "2026-10-10"
+license: MIT
+authors:
+  - alias: NGC2632M44
+    name: NGC2632M44
+repository-code: "https://github.com/NGC2632M44/boltz2-water-benchmark"
+keywords:
+  - Boltz-2
+  - protein-ligand
+  - water molecules
+  - structure prediction
+  - benchmark
+references:
+  - title: "Boltz-2"
+    type: software
+    url: "https://github.com/jwohlwend/boltz"
+    license: MIT
+  - title: "RCSB Protein Data Bank"
+    type: dataset
+    url: "https://www.rcsb.org"

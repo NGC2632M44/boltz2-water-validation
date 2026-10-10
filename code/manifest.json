@@ -1,0 +1,59 @@
+{
+  "benchmark": "Boltz-2 ligand pose and water oxygen prediction as a function of input water count",
+  "accessed": "2026-10-09",
+  "source": "RCSB Protein Data Bank",
+  "source_urls": {
+    "entry_template": "https://www.rcsb.org/structure/{pdb_id}",
+    "structure_cif_template": "https://files.rcsb.org/download/{pdb_id}.cif",
+    "component_cif_template": "https://files.rcsb.org/ligands/download/{ccd}.cif"
+  },
+  "selection_notes": {
+    "original_ids_provided": 29,
+    "excluded": {
+      "2J6V": "No organic target ligand suitable for ligand-pose RMSD evaluation.",
+      "4X2N": "No organic target ligand suitable for ligand-pose RMSD evaluation."
+    },
+    "added_to_reach_30_evaluable_targets": ["10OT", "28JH", "30GX"],
+    "added_target_reason": "RCSB entries with an organic ligand and nearby crystallographic waters; preserve 30 targets after excluding the two entries without an evaluable organic ligand."
+  },
+  "design": {
+    "input_water_counts": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "diffusion_samples_per_input": 30,
+    "requested_prediction_count": 9000,
+    "water_entity": "One independent CCD HOH ligand entity per requested water oxygen; no native water coordinates are supplied.",
+    "ligand_entity": "Canonical SMILES derived from the official RCSB chemical-component dictionary; no native ligand coordinates are supplied.",
+    "native_reference_use": "Post-hoc evaluation and paired visualization only; no native coordinates, templates, or pocket restraints are passed to Boltz-2."
+  },
+  "targets": [
+    {"pdb_id": "11ES", "ligand_ccd": "GDP"},
+    {"pdb_id": "12EW", "ligand_ccd": "CXF"},
+    {"pdb_id": "36CA", "ligand_ccd": "A1DI0"},
+    {"pdb_id": "31LQ", "ligand_ccd": "ADP"},
+    {"pdb_id": "1IEP", "ligand_ccd": "STI"},
+    {"pdb_id": "1M17", "ligand_ccd": "AQ4"},
+    {"pdb_id": "2HYY", "ligand_ccd": "STI"},
+    {"pdb_id": "3CS9", "ligand_ccd": "NIL"},
+    {"pdb_id": "2ITY", "ligand_ccd": "IRE"},
+    {"pdb_id": "2ITN", "ligand_ccd": "ANP"},
+    {"pdb_id": "2ITO", "ligand_ccd": "IRE"},
+    {"pdb_id": "2ITP", "ligand_ccd": "AEE"},
+    {"pdb_id": "2ITQ", "ligand_ccd": "ITQ"},
+    {"pdb_id": "2ITT", "ligand_ccd": "AEE"},
+    {"pdb_id": "2ITU", "ligand_ccd": "ITQ"},
+    {"pdb_id": "2ITV", "ligand_ccd": "ANP"},
+    {"pdb_id": "2ITW", "ligand_ccd": "ITQ"},
+    {"pdb_id": "2ITX", "ligand_ccd": "ANP"},
+    {"pdb_id": "2ITZ", "ligand_ccd": "IRE"},
+    {"pdb_id": "4X0M", "ligand_ccd": "3WA"},
+    {"pdb_id": "4X2F", "ligand_ccd": "3WJ"},
+    {"pdb_id": "4X2G", "ligand_ccd": "3WK"},
+    {"pdb_id": "4X2J", "ligand_ccd": "3WN"},
+    {"pdb_id": "4X2K", "ligand_ccd": "3WO"},
+    {"pdb_id": "1YWN", "ligand_ccd": "LIF"},
+    {"pdb_id": "1FIN", "ligand_ccd": "ATP"},
+    {"pdb_id": "4AGD", "ligand_ccd": "B49"},
+    {"pdb_id": "10OT", "ligand_ccd": "A1C64"},
+    {"pdb_id": "28JH", "ligand_ccd": "XI7"},
+    {"pdb_id": "30GX", "ligand_ccd": "A1J6C"}
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "rows": 8580,
+  "ok": 8580,
+  "partial": 0,
+  "errors": 0,
+  "missing": 0,
+  "failed_total": 0,
+  "metrics_csv": "/path/to/boltz-water-benchmark/metrics/production/sample_metrics.csv"
+}

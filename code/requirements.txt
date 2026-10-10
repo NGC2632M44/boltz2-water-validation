@@ -1,0 +1,8 @@
+# Python dependencies for the analysis pipeline (prepare / evaluate / summarize).
+# Boltz-2 itself is installed separately (https://github.com/jwohlwend/boltz).
+gemmi>=0.6
+rdkit>=2023.9
+numpy>=1.24
+scipy>=1.10
+networkx>=3.0
+PyYAML>=6.0

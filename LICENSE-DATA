@@ -1,0 +1,22 @@
+Data, figures and report are licensed under the Creative Commons
+Attribution 4.0 International License (CC BY 4.0).
+
+You are free to share (copy and redistribute the material in any medium or
+format) and adapt (remix, transform, and build upon the material) for any
+purpose, even commercially, provided you give appropriate credit, provide a
+link to the license, and indicate if changes were made.
+
+This applies to the contents of `data/` and `docs/` in this repository,
+including the result tables, scatter coordinates, figures, and the report.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Attribution:
+- Experimental structures and ligand chemical components: RCSB Protein Data
+  Bank (https://www.rcsb.org), available under CC0 / public-domain terms.
+- Predicted structures: Boltz-2 (https://github.com/jwohlwend/boltz), MIT.
+- Multiple sequence alignments: ColabFold / MMseqs2 MSA server.
+
+Suggested attribution for this benchmark:
+"Boltz-2 Water-Count Benchmark" (2026), NGC2632M44,
+https://github.com/NGC2632M44/boltz2-water-benchmark

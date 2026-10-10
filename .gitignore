@@ -1,0 +1,21 @@
+# Large run artifacts (kept out of Git; distributed via Releases)
+results/
+runs/
+pairs/
+output/
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# MSA / intermediate data
+*.a3m
+*.mgnify30.metaeuk30.smag30*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
