@@ -6,7 +6,8 @@ the predicted water oxygens reproduce **crystallographic (experimental) water po
 
 The model receives **no** native protein, ligand, or water coordinates, **no** templates, and
 **no** pocket restraints — the benchmark is a blind prediction; crystal structures are used only
-for post-hoc scoring. See [`docs/report.html`](docs/report.html) for the full write-up.
+for post-hoc scoring. See the [full report](docs/report.html)
+([rendered online](https://ngc2632m44.github.io/boltz2-water-benchmark/report.html)) for the complete write-up.
 
 ## At a glance
 
