@@ -65,7 +65,7 @@ Full per-target analysis is in [`docs/report.html`](docs/report.html).
 
 ```
 code/    prediction and evaluation pipeline (prepare → run_grid/run_retry → evaluate → summarize),
-         unit tests, the study manifest, and its own README
+         unit tests, the dataset manifest, and its own README
 data/    summary tables, per-sample metrics, and sanitized provenance manifests
 docs/    full report (HTML/Markdown) and the two result figures
 ```
@@ -76,7 +76,8 @@ no credentials, tokens, or private data are included.
 ## Data and large artifacts
 
 Small tables, figures and manifests live in this repository. The **large archives** are attached to
-the [Releases](../../releases) page (they exceed Git hosting limits):
+the [Releases](https://github.com/NGC2632M44/boltz2-water-validation/releases) page (they exceed Git
+hosting limits):
 
 - `paired_reference_boltz_pdbs.zip` — 8,580 paired PDBs; each file holds the reference and the
   aligned Boltz-2 prediction in a single MODEL (see *Visualization* below).
