@@ -14,9 +14,9 @@ for post-hoc scoring. See the [full report](docs/report.html)
 | | |
 |---|---|
 | Targets | 30 RCSB complexes |
-| Requested water counts | 1–10 (independent `HOH` entities) |
+| Requested water counts | 0–10 (0 = blank control; 1–10 = independent `HOH` entities) |
 | Diffusion samples | up to 30 per (target, water count) |
-| Completed predictions | **8,580 / 9,000 (95.3%)**, all successful |
+| Completed predictions | **8,580** (1–10 waters) + **858** (0-water control), all successful |
 | Ligand pose | median heavy-atom RMSD ≈ 2.0 Å, flat across water counts |
 | Predicted waters | one-to-one F1 @ 2.0 Å only 0.019 → 0.036 (1 → 10 waters) |
 
@@ -32,7 +32,10 @@ every water count: **requesting more waters neither improves nor degrades the li
 Overall, ~50% of samples are < 2 Å, ~76% < 5 Å and ~87% < 10 Å. The distribution is heavy-tailed:
 a minority of samples (dominated by a few large multi-chain complexes) deviate by tens of Ångström.
 The purple dashed line marks the common 2.0 Å ligand-pose success criterion; the model sits on it
-by median but its tail exceeds it.
+by median but its tail exceeds it. The **x = 0 column is the blank control** (protein–ligand
+co-folding with no explicit water requested): its median RMSD (≈ 1.9 Å) is indistinguishable from
+the 1–10 water columns, so requesting explicit waters neither improves nor worsens the ligand pose
+relative to simply not asking for any.
 
 ### Predicted water oxygens do not reproduce crystallographic waters
 
@@ -46,6 +49,9 @@ real hydration sites. The one-to-one F1 at 2.0 Å rises only from 0.019 to 0.036
 from 1 to 10 waters (precision falls 0.113 → 0.036, recall rises 0.011 → 0.040). The purple dashed
 line marks a competent water-placement accuracy of ~1.0 Å (WaterDock leaves a mean error of
 ≈ 0.78 Å; SuperWater reports ≈ 0.3 Å), i.e. the model is about an order of magnitude off.
+
+At the **x = 0 blank control** there are no predicted water oxygens (the model emits oxygens only
+when explicitly asked for `HOH` entities), so that column is empty by construction.
 
 The water conclusion is **not** an artefact of the largest complexes: after excluding the three
 four-chain targets, or restricting to samples whose receptor and ligand pose are correct
@@ -83,6 +89,10 @@ hosting limits):
   aligned Boltz-2 prediction in a single MODEL (see *Visualization* below).
 - `source_data_and_metrics.zip` — source structures, ligand-component CIFs, MSA CSVs, predictions,
   logs, and metrics.
+
+The per-sample metrics for the 0-water blank control are in
+[`data/sample_metrics_water0_control.csv`](data/sample_metrics_water0_control.csv); the summary
+tables and figures in `data/`/`docs/` already include the 0-water column.
 
 ## Reproducing
 

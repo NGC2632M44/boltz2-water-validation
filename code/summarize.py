@@ -33,6 +33,11 @@ def numeric(rows: list[dict], key: str) -> list[float]:
     return values
 
 
+def mean_or_none(rows: list[dict], key: str):
+    values = numeric(rows, key)
+    return statistics.mean(values) if values else None
+
+
 def write_csv(path: Path, rows: list[dict], columns: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as output_file:
@@ -57,10 +62,10 @@ def summarize_by_water_count(rows: list[dict]) -> list[dict]:
                 "ligand_rmsd_mean_A": statistics.mean(rmsd) if rmsd else None,
                 "ligand_rmsd_median_A": statistics.median(rmsd) if rmsd else None,
                 "ligand_rmsd_sd_A": statistics.stdev(rmsd) if len(rmsd) > 1 else None,
-                "water_f1_2p0A_mean": statistics.mean(numeric(valid, "f1_2p0A")) if valid else None,
-                "water_precision_2p0A_mean": statistics.mean(numeric(valid, "precision_2p0A")) if valid else None,
-                "water_recall_2p0A_mean": statistics.mean(numeric(valid, "recall_2p0A")) if valid else None,
-                "mean_one_to_one_water_distance_A": statistics.mean(numeric(valid, "mean_one_to_one_distance_A")) if valid else None,
+                "water_f1_2p0A_mean": mean_or_none(valid, "f1_2p0A"),
+                "water_precision_2p0A_mean": mean_or_none(valid, "precision_2p0A"),
+                "water_recall_2p0A_mean": mean_or_none(valid, "recall_2p0A"),
+                "mean_one_to_one_water_distance_A": mean_or_none(valid, "mean_one_to_one_distance_A"),
             }
         )
     return summary
@@ -81,7 +86,7 @@ def summarize_by_target(rows: list[dict]) -> list[dict]:
                 "valid": len(valid),
                 "ligand_rmsd_mean_A": statistics.mean(rmsd) if rmsd else None,
                 "ligand_rmsd_median_A": statistics.median(rmsd) if rmsd else None,
-                "water_f1_2p0A_mean": statistics.mean(numeric(valid, "f1_2p0A")) if valid else None,
+                "water_f1_2p0A_mean": mean_or_none(valid, "f1_2p0A"),
             }
         )
     return output
@@ -105,7 +110,7 @@ def scatter_coordinate_rows(rows: list[dict]) -> list[dict]:
     return coordinates
 
 
-def svg_scatter(rows: list[dict], metric_key: str, title: str, y_label: str, output_path: Path, color: str, baseline_value: float | None = None, baseline_label: str = "") -> None:
+def svg_scatter(rows: list[dict], metric_key: str, title: str, y_label: str, output_path: Path, color: str, baseline_value: float | None = None, baseline_label: str = "", x_min: int = 0, x_max: int = 10) -> None:
     points = []
     targets = sorted({row["pdb_id"] for row in rows})
     target_index = {pdb_id: index for index, pdb_id in enumerate(targets)}
@@ -126,7 +131,7 @@ def svg_scatter(rows: list[dict], metric_key: str, title: str, y_label: str, out
     plot_width, plot_height = width - left - right, height - top - bottom
     max_value = max((point[1] for point in points), default=1.0)
     y_max = max(1.0, math.ceil(max_value * 1.05 * 2) / 2)
-    to_x = lambda value: left + (value - 0.5) / 10.0 * plot_width
+    to_x = lambda value: left + (value - x_min) / (x_max - x_min) * plot_width
     to_y = lambda value: top + plot_height - value / y_max * plot_height
     lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
@@ -139,7 +144,7 @@ def svg_scatter(rows: list[dict], metric_key: str, title: str, y_label: str, out
         y_position = to_y(value)
         lines.append(f'<line x1="{left}" y1="{y_position:.1f}" x2="{width-right}" y2="{y_position:.1f}" stroke="#d9dee7"/>')
         lines.append(f'<text x="{left-14}" y="{y_position+5:.1f}" text-anchor="end" font-family="Arial" font-size="14" fill="#394150">{value:.1f}</text>')
-    for water_count in range(1, 11):
+    for water_count in range(x_min, x_max + 1):
         x_position = to_x(water_count)
         lines.append(f'<line x1="{x_position:.1f}" y1="{top}" x2="{x_position:.1f}" y2="{top+plot_height}" stroke="#eef1f5"/>')
         lines.append(f'<text x="{x_position:.1f}" y="{top+plot_height+28}" text-anchor="middle" font-family="Arial" font-size="14" fill="#394150">{water_count}</text>')
@@ -147,7 +152,7 @@ def svg_scatter(rows: list[dict], metric_key: str, title: str, y_label: str, out
     lines.append(f'<line x1="{left}" y1="{top}" x2="{left}" y2="{top+plot_height}" stroke="#273142" stroke-width="2"/>')
     for x_position, value, pdb_id, water_count in points:
         lines.append(f'<circle cx="{to_x(x_position):.2f}" cy="{to_y(value):.2f}" r="2.5" fill="{color}" fill-opacity="0.36"><title>{escape(pdb_id)}; waters={water_count}; {y_label}={value:.3f}</title></circle>')
-    for water_count in range(1, 11):
+    for water_count in range(x_min, x_max + 1):
         group = [point[1] for point in points if point[3] == water_count]
         if group:
             median = statistics.median(group)
